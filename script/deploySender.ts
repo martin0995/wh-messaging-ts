@@ -2,31 +2,9 @@ import { ethers } from 'ethers';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { ChainsConfig, DeployedContracts, MessageSenderJson } from './interfaces';
 
 dotenv.config();
-
-interface Chain {
-	description: string;
-	rpc: string;
-	wormholeRelayer: string;
-}
-
-interface ChainsConfig {
-	chains: Chain[];
-}
-
-interface MessageSenderJson {
-	abi: any[];
-	bytecode: string;
-}
-
-interface ContractDetails {
-	[contractName: string]: string;
-}
-
-interface DeployedContracts {
-	[key: string]: ContractDetails & { deployedAt?: string };
-}
 
 async function main(): Promise<void> {
 	// Load the chain configuration from JSON

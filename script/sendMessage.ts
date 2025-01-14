@@ -2,23 +2,9 @@ import { ethers } from 'ethers';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { ChainsConfig, DeployedContracts } from './interfaces';
 
 dotenv.config();
-
-interface Chain {
-	description: string;
-	rpc: string;
-}
-
-interface ChainsConfig {
-	chains: Chain[];
-}
-
-interface DeployedContracts {
-	[key: string]: {
-		[contractName: string]: string;
-	};
-}
 
 async function main(): Promise<void> {
 	// Load the chain configuration and deployed contract addresses
