@@ -79,7 +79,7 @@ async function main(): Promise<void> {
 	const sourceChainId = 6;
 
 	// Call setRegisteredSender on the MessageReceiver contract
-	const tx = await receiverContract.setRegisteredSender(
+	const tx = await (receiverContract as any).setRegisteredSender(
 		sourceChainId,
 		ethers.zeroPadValue(avalancheSenderAddress, 32)
 	);
