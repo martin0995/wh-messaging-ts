@@ -16,7 +16,7 @@ contract MessageReceiver is IWormholeReceiver {
 
     constructor(address _wormholeRelayer) {
         wormholeRelayer = IWormholeRelayer(_wormholeRelayer);
-        registrationOwner = msg.sender;  // Set contract deployer as the owner
+        registrationOwner = msg.sender; // Set contract deployer as the owner
     }
 
     // Modifier to check if the sender is registered for the source chain
@@ -38,12 +38,7 @@ contract MessageReceiver is IWormholeReceiver {
         bytes32 sourceAddress,
         uint16 sourceChain,
         bytes32 // delivery hash
-    )
-        public
-        payable
-        override
-        isRegisteredSender(sourceChain, sourceAddress)
-    {
+    ) public payable override isRegisteredSender(sourceChain, sourceAddress) {
         require(msg.sender == address(wormholeRelayer), "Only the Wormhole relayer can call this function");
 
         // Decode the payload to extract the message
