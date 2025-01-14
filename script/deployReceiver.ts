@@ -90,7 +90,7 @@ async function main(): Promise<void> {
 	);
 
 	deployedContracts.celo = {
-		MessageReceiver: receiverContract.target,
+		MessageReceiver: receiverContract.target as any,
 		deployedAt: new Date().toISOString(),
 	};
 
